@@ -96,4 +96,20 @@ public class MainPage {
         return errorElement.isDisplayed();
     }
 
+    public void clickLoginTopOrHeroButton(String buttonType) {
+        By locator;
+        switch (buttonType) {
+            case "personal":
+                locator = PERSONAL_ACCOUNT_BUTTON;
+                break;
+            case "login":
+                locator = LOGIN_BUTTON;
+                break;
+            default:
+                throw new IllegalArgumentException("Неизвестный тип кнопки: " + buttonType);
+        }
+        wait.until(ExpectedConditions.elementToBeClickable(locator)).click();
+
+    }
+
 }
