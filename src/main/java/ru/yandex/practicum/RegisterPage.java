@@ -65,12 +65,4 @@ public class RegisterPage {
         wait.until(ExpectedConditions.elementToBeClickable(LOGIN_REG_FORM_BUTTON)).click();
     }
 
-    @Step("Заполнение формы Регистрация")
-    public void fillLoginForm(String name, String email, String password) {
-        fillName(name);
-        fillEmailRegistration(email);
-        fillPasswordRegistration(password);
-        clickLoginRegistrationButton();
-    }
-
 }
