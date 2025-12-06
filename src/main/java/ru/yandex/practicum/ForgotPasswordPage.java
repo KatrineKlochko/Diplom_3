@@ -24,6 +24,14 @@ public class ForgotPasswordPage {
     //кнопка Восстановить в форме Восстановление пароля
     private static final By RESTORE_BUTTON = By.xpath("//button[contains(@class,'button_button__33qZ0') and text()='Восстановить']");
 
+    //кновка Войти в форме Регистрация
+    private static final By LOGIN_FORGOT_FORM_BUTTON = By.xpath("//a[@class='Auth_link__1fOlj' and text()='Войти']");
+
+
+    @Step("Клик по кнопке Войти")
+    public void clickLoginForgotButton() {
+        wait.until(ExpectedConditions.elementToBeClickable(LOGIN_FORGOT_FORM_BUTTON)).click();
+    }
 
     @Step("Заполнение поля email")
     public void fillEmailForgotPassword(String email) {

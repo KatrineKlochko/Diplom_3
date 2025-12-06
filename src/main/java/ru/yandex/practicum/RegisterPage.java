@@ -30,6 +30,9 @@ public class RegisterPage {
     //ошибка для некорректного пароля
     private static final By ERROR_PASSWORD_MESSAGE = By.xpath("//p[@class='input__error text_type_main-default' and text()='Некорректный пароль']");
 
+    //кновка Войти в форме Регистрация
+    private static final By LOGIN_REG_FORM_BUTTON = By.xpath("//a[@class='Auth_link__1fOlj' and text()='Войти']");
+
 
     @Step("Заполнение поля Имя")
     public void fillName(String name) {
@@ -55,6 +58,11 @@ public class RegisterPage {
     public boolean isPasswordErrorVisible() {
         WebElement errorElement = wait.until(ExpectedConditions.visibilityOfElementLocated(ERROR_PASSWORD_MESSAGE));
         return errorElement.isDisplayed();
+    }
+
+    @Step("Клик по кнопке Войти")
+    public void clickLoginHeroButton() {
+        wait.until(ExpectedConditions.elementToBeClickable(LOGIN_REG_FORM_BUTTON)).click();
     }
 
     @Step("Заполнение формы Регистрация")

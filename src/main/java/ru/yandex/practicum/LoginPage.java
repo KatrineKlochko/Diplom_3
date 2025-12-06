@@ -19,8 +19,8 @@ public class LoginPage {
     }
 
     //поля формы Вход
-    private static final By EMAIL_LOGIN_FIELD = By.cssSelector("input[placeholder='* Email']");
-    private static final By PASSWORD_LOGIN_FIELD = By.cssSelector("input[placeholder='* Пароль']");
+    private static final By EMAIL_LOGIN_FIELD = By.xpath("//input[@name='name']");
+    private static final By PASSWORD_LOGIN_FIELD = By.xpath("//input[@name='Пароль']");
 
     //кнопка войти
     private static final By LOGIN_FORM_BUTTON = By.xpath("//button[contains(@class,'button_button__33qZ0') and text()='Войти']");
@@ -32,12 +32,12 @@ public class LoginPage {
 
     @Step("Заполнение поля email")
     public void fillEmail(String email) {
-        driver.findElement(EMAIL_LOGIN_FIELD).sendKeys(email);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(EMAIL_LOGIN_FIELD)).sendKeys(email);
     }
 
     @Step("Заполнение поля пароль")
     public void fillPassword(String password) {
-        driver.findElement(PASSWORD_LOGIN_FIELD).sendKeys(password);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(PASSWORD_LOGIN_FIELD)).sendKeys(password);
     }
 
     @Step("Клик по кнопке Войти")

@@ -9,7 +9,7 @@ import ru.yandex.practicum.RegisterPage;
 import static org.junit.Assert.assertTrue;
 
 
-public class RegistrationTests extends BaseUITest {
+public class RegistrationErrorTests extends BaseUITest {
 
     @Test
     @DisplayName("Ошибка при регистрации: пароль меньше 6 символов")
