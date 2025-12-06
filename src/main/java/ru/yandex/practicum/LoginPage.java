@@ -55,13 +55,6 @@ public class LoginPage {
         wait.until(ExpectedConditions.elementToBeClickable(PASSWORD_RECOVER_BUTTON)).click();
     }
 
-    @Step("Заполнение формы Вход")
-    public void fillLoginForm(String email, String password) {
-        fillEmail(email);
-        fillPassword(password);
-        clickLoginButton();
-    }
-
     @Step("Ожидание кнопки Вход в форме входа")
     public boolean isLoginButtonVisible() {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(LOGIN_FORM_BUTTON)).isDisplayed();

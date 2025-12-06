@@ -18,12 +18,6 @@ public class ForgotPasswordPage {
         PageFactory.initElements(driver, this);
     }
 
-    //поля формы Восстановление пароля
-    private static final By EMAIL_FIELD_FORGOT_PASSWORD = By.xpath("//button[contains(@class,'Auth_fieldset__1QzWN mb-6') and text()='Email']");
-
-    //кнопка Восстановить в форме Восстановление пароля
-    private static final By RESTORE_BUTTON = By.xpath("//button[contains(@class,'button_button__33qZ0') and text()='Восстановить']");
-
     //кновка Войти в форме Регистрация
     private static final By LOGIN_FORGOT_FORM_BUTTON = By.xpath("//a[@class='Auth_link__1fOlj' and text()='Войти']");
 
@@ -32,16 +26,4 @@ public class ForgotPasswordPage {
     public void clickLoginForgotButton() {
         wait.until(ExpectedConditions.elementToBeClickable(LOGIN_FORGOT_FORM_BUTTON)).click();
     }
-
-    @Step("Заполнение поля email")
-    public void fillEmailForgotPassword(String email) {
-        driver.findElement(EMAIL_FIELD_FORGOT_PASSWORD).sendKeys(email);
-    }
-
-    @Step("Клик по кнопке Восстановить")
-    public void clickRestoreButton() {
-        wait.until(ExpectedConditions.elementToBeClickable(RESTORE_BUTTON)).click();
-    }
-
-
 }
