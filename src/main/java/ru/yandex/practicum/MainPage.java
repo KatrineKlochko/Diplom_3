@@ -26,31 +26,25 @@ public class MainPage {
     private static final By PERSONAL_ACCOUNT_BUTTON = By.xpath("//p[contains(@class,'AppHeader_header__linkText__3q_va') and text()='Личный Кабинет']");
 
     //кнопка булки
-    private static final By BUN_BUTTON = By.xpath("//div[contains(@class,'tab_tab__1SPyG') and text()='Булки']");
+    private static final By BUN_BUTTON = By.xpath("//span[contains(@class,'text_type_main-default') and text()='Булки']");
 
     //кнопка соусы
-    private static final By SOUS_BUTTON = By.xpath("//div[contains(@class,'tab_tab__1SPyG') and text()='Соусы']");
+    private static final By SOUS_BUTTON = By.xpath("//span[contains(@class,'text_type_main-default') and text()='Соусы']");
 
     //кнопка начинки
-    private static final By FILLING_BUTTON = By.xpath("//div[contains(@class,'tab_tab__1SPyG') and text()='Начинки']");
+    private static final By FILLING_BUTTON = By.xpath("//span[contains(@class,'text_type_main-default') and text()='Начинки']");
 
-    //заголовок вкладки булки
-    //private static final By BUN_HEADER = By.xpath("//h2[text()='Булки']");
+    //показатель активности кнопки
+    private static final By ACTIVE_BUTTON = By.xpath("//div[contains(@class,'tab_tab_type_current__2BEPc')]");
 
-    //заголовок вкладки соусы
-    //private static final By SOUS_HEADER = By.xpath("//h2[text()='Соусы']");
+    //секция ингридиентов булки
+    private static final By BUN_INGREDIENTS = By.xpath("//h2[text()='Булки']/following-sibling::ul[1]");
 
-    //заголовок вкладки начинки
-    //private static final By FILLING_HEADER = By.xpath("//h2[text()='Начинки']");
+    //секция ингридиентов соусы
+    private static final By SOUS_INGREDIENTS = By.xpath("//h2[text()='Соусы']/following-sibling::ul[1]");
 
-    //лист ингридиентов булки
-    private static final By BUN_INGREDIENTS = By.xpath("//*[@id=\"root\"]/div/main/section[1]/div[2]/ul[1]");
-
-    //лист ингридиентов соусы
-    private static final By SOUS_INGREDIENTS = By.xpath("//*[@id=\"root\"]/div/main/section[1]/div[2]/ul[2]");
-
-    //лист ингридиентов начинки
-    private static final By FILLING_INGREDIENTS = By.xpath("//*[@id=\"root\"]/div/main/section[1]/div[2]/ul[3]");
+    //секция ингридиентов начинки
+    private static final By FILLING_INGREDIENTS = By.xpath("//h2[text()='Начинки']/following-sibling::ul[1]");
 
 
     @Step("Клик по кнопке 'Войти в аккаунт'")
@@ -80,20 +74,30 @@ public class MainPage {
 
     @Step("Видимость листа ингридиентов Булки")
     public boolean isBunsIngredientsVisible() {
-        WebElement errorElement = wait.until(ExpectedConditions.visibilityOfElementLocated(BUN_INGREDIENTS));
-        return errorElement.isDisplayed();
+        WebElement bunElements = wait.until(ExpectedConditions.visibilityOfElementLocated(BUN_INGREDIENTS));
+        return bunElements.isDisplayed();
     }
 
     @Step("Видимость листа ингридиентов Соусы")
     public boolean isSousIngredientsVisible() {
-        WebElement errorElement = wait.until(ExpectedConditions.visibilityOfElementLocated(SOUS_INGREDIENTS));
-        return errorElement.isDisplayed();
+        WebElement sousElements = wait.until(ExpectedConditions.visibilityOfElementLocated(SOUS_INGREDIENTS));
+        return sousElements.isDisplayed();
     }
 
     @Step("Видимость листа ингридиентов Начинки")
     public boolean isFillingIngredientsVisible() {
-        WebElement errorElement = wait.until(ExpectedConditions.visibilityOfElementLocated(FILLING_INGREDIENTS));
-        return errorElement.isDisplayed();
+        WebElement fillingElements = wait.until(ExpectedConditions.visibilityOfElementLocated(FILLING_INGREDIENTS));
+        return fillingElements.isDisplayed();
+    }
+
+    @Step("Получение активной вкладки конструктора")
+    public String getActiveTabText() {
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(ACTIVE_BUTTON)).getText();
+    }
+
+    @Step("Ожидание, пока активная вкладка станет '{expected}'")
+    public void waitForActiveTab(String expected) {
+        wait.until(ExpectedConditions.textToBe(ACTIVE_BUTTON, expected));
     }
 
     public void clickLoginTopOrHeroButton(String buttonType) {
