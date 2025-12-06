@@ -13,15 +13,23 @@ public class WebDriverFactory {
         switch (browser.toLowerCase()) {
 
             case "yandex":
-                System.setProperty("webdriver.chrome.driver", "src/test/resources/yandexdriver");
-                ChromeOptions yaOptions = new ChromeOptions();
-                yaOptions.setBinary("/Applications/Yandex.app/Contents/MacOS/Yandex");
-                return new ChromeDriver(yaOptions);
+                return getYandexDriver();
 
             case "chrome":
             default:
                 WebDriverManager.chromedriver().setup();
                 return new ChromeDriver();
         }
+    }
+
+    private static WebDriver getYandexDriver() {
+
+        System.setProperty("webdriver.chrome.driver",
+                "src/test/resources/yandexdriver");
+
+        ChromeOptions options = new ChromeOptions();
+        options.setBinary("/Applications/Yandex.app/Contents/MacOS/Yandex");
+
+        return new ChromeDriver(options);
     }
 }
