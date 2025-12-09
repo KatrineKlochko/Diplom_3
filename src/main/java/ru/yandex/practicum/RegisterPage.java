@@ -21,12 +21,11 @@ public class RegisterPage {
 
     //поля формы Регистрация
     private static final By NAME_REGISTRATION_FIELD = By.xpath("//input[@name='name']");
-    private static final By EMAIL_REGISTRATION_FIELD = By.xpath("//*[@id=\"root\"]/div/main/div/form/fieldset[2]/div/div/input");
+    private static final By EMAIL_REGISTRATION_FIELD = By.xpath("//label[text()='Email']/following-sibling::input");
     private static final By PASSWORD_REGISTRATION_FIELD = By.xpath("//input[@name='Пароль']");
 
     //кнопка Зарегистрироваться в форме Регистрация
     private static final By REGISTER_BUTTON = By.xpath("//button[contains(@class,'button_button__33qZ0') and text()='Зарегистрироваться']");
-
     //ошибка для некорректного пароля
     private static final By ERROR_PASSWORD_MESSAGE = By.xpath("//p[@class='input__error text_type_main-default' and text()='Некорректный пароль']");
 
